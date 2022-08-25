@@ -29,3 +29,8 @@ if (age < 16)
 {
     console.log("You can't drive!");
 }
+
+// EXTRA
+// '12' == 12 -- YES IT DOES
+// '12' === 12 -- NOT IT DOESNT
+// === means the EXACT same
