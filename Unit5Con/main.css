@@ -1,0 +1,13 @@
+body {
+    font-family:'Courier New', Courier, monospace;
+}
+
+h1 {
+    text-align: center;
+    color: black;
+
+}
+
+.top {
+    background-color: (141, 197, 190);
+}
