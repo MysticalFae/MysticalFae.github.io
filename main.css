@@ -1,5 +1,6 @@
 body {
     font-family:'Courier New', Courier, monospace;
+    background-color: RGB(212, 231, 228);
 }
 
 h1 {
@@ -9,5 +10,5 @@ h1 {
 }
 
 .top {
-    background-color: (141, 197, 190);
+    background-color: RGB(141, 197, 190);
 }
