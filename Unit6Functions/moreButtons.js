@@ -87,7 +87,7 @@ elCalcResult.onclick = function()
     if (inside < 0)
     {
         newInside = -(inside);
-        console.log(newInside);
+       // console.log(newInside);
         let insidePart = Math.sqrt(newInside) / (2 * a);
         let outsidePart = -b / (2 * a);
         outsidePart = outsidePart.toFixed(3);
