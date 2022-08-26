@@ -1,8 +1,10 @@
-alert(" Welcome to this story! Please navigate to the console to receive information on your journey. I despise alerts.")
+alert(" Welcome to this story! Please navigate to the console to receive information on your journey. I despise alerts. NOTE: you will have to use keybinds to get to the console since it won't let you right click (on mine at least). Sorry!");
 
 console.log("This is where story information will be shown!");
 console.log("While on the way to the store, you spot a friendly looking dog.");
 
+// let stop;
+// setTimeout(() => { stop = prompt("Do you (1) pull over, or (2) continue on? (Side note: you can safely pull over to check on the dog)");}, 5000);
 let stop = prompt("Do you (1) pull over, or (2) continue on? (Side note: you can safely pull over to check on the dog)");
 
 if(stop == "2")
