@@ -1,0 +1,21 @@
+body {
+    font-family:'Courier New', Courier, monospace;
+    background-color: RGB(212, 231, 228);
+   
+}
+
+h1 {
+    text-align: center;
+    color: black;
+    font-size: 40px;
+
+}
+
+.top {
+    background-color: RGB(141, 197, 190);
+    
+}
+
+li {
+    font-size: 15px;
+}
