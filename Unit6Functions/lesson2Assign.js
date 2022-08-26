@@ -8,7 +8,7 @@ function volumeOfCube(side)
 //function for area of triangle
 let areaOfTri = (height, length) => {
     let area = .5 * height * length;
-    console.log("here");
+  //  console.log("here");
     alert("The area of a triangle with a length of " + length + " and a height of " + height + " is " + area);
 }
 
