@@ -17,45 +17,23 @@ h2 {
 
 }
 
-.farLeft {
- 
+.mainBox {
 
-    display: flex;
-    justify-content: center;
-    width: 350px;
     background-color: RGB(213, 212, 231);
-    margin-left: 20px;
- 
-  
+    margin: 20px;
+    vertical-align: top;
+    
+   
+}
+
+.one {
+
+    text-align: center;
+    vertical-align: top;
 
 }
 
-.mid {
-   
-    width: 350px;
-    display: flex;
-    justify-content: center;
-    background-color: RGB(231, 212, 226);
-    position: absolute;
-  
-    margin-left: 390px;
-  
-
-    
-    
-
-}
-
-.farRight {
-    
-    display: flex;
-    justify-content: center;
-    width: 350px;
-    background-color: RGB(212, 231, 214);
-
-    margin-left: 760px;
-   
-
-    
-
+.three {
+    text-align:end;
+    vertical-align: top;
 }
