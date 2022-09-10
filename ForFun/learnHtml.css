@@ -11,27 +11,51 @@ h1 {
 }
 
 h2 {
-    text-align: center;
+  
     color: black;
     font-size: 20px;
 
 }
 
 .farLeft {
+ 
 
-background-color: RGB(213, 212, 231);
+    display: flex;
+    justify-content: center;
+    width: 350px;
+    background-color: RGB(213, 212, 231);
+    margin-left: 20px;
+ 
+  
 
 }
 
 .mid {
+   
+    width: 350px;
+    display: flex;
+    justify-content: center;
+    background-color: RGB(231, 212, 226);
+    position: absolute;
+  
+    margin-left: 390px;
+  
 
-   display: flex;
-   justify-content: center;
+    
+    
 
 }
 
 .farRight {
+    
+    display: flex;
+    justify-content: center;
+    width: 350px;
+    background-color: RGB(212, 231, 214);
 
-    background-color: (212, 231, 214);
+    margin-left: 760px;
+   
+
+    
 
 }
