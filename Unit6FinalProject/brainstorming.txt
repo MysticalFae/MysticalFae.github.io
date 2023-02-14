@@ -1,0 +1,37 @@
+Requierments --
+- includes program loop
+- includes 3 class ideas
+
+Ideas for Project --
+
+1. Book log
+users can input a new book (title, author, and rating)
+and, they can access said book through the title (or maybe a code).
+User can print out all the book titles along with their code as a reference
+And maybe the books can be accessed by each "identifier" (i.e. their title, the author, their rating)
+Like the user can sort by rating or by author or by title
+or, they can pull out certain book logs that contain specific info (ex. only books w/ 5 stars)
+and maybe there's an option while they're logging their book that allows them to briefly write their thoughts on it
+
+    classes - 
+    I feel like most of this could be achieved with a single class called "book" but...
+    1. Maybe a class for adding/changing info on books 
+    Methods :
+        newBook(title, author, rating)
+        newBook(title, author, rating, thoughts)
+        remove(title)
+        change(type, newValue)
+    Attributes :
+        title, author, rating, thoughts, code
+
+    2. A class for retriving the info on the books
+    Methods :
+        find(bookTitle)
+        find(bookCode)
+        listAll()
+        findAllWith(type, value)
+    Attributes :
+        none?
+    3. And, maybe a parent class simply called "books" that deals with the simple/standard parts
+    I don't really know what the methods/attributes would be for this one.. I guess I could take
+    out the newBook methods in the first class and put them in this one? Seems sort of pointless though
