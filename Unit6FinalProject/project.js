@@ -63,7 +63,7 @@ class book
 
 class allBooks
 {
-    allBooksArray;
+    allBooksArray = [1,2,3,4];
 
     constructor(allBooksArray)
     {
