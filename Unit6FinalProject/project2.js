@@ -22,8 +22,12 @@ class bookInfo
   canIReadToday(book)
   {
     let pages = book.returnPages();
-    let hours = pages / this.#pagesPerHour;
-    if(hours+1 <= this.#amtReadPerDay)
+    let hours =  pages / this.#pagesPerHour;
+    if(pages % this.#pagesPerHour != 0)
+    {
+      hours = hours+1;
+    }
+    if(hours <= this.#amtReadPerDay)
     {
       return "You can read the book today!";
     }
@@ -43,19 +47,11 @@ class book
 
   constructor(title, author, pages, readYet, rating) //have read
   {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.readYet = readYet;
-    this.rating = rating;
-  }
-  constructor(title, author, pages, readYet) //if they havent read it yet
-  {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.rating = 0;
-    this.readYet = readYet;
+    this.#title = title;
+    this.#author = author;
+    this.#pages = pages;
+    this.#readYet = readYet;
+    this.#rating = rating;
   }
 
   returnTitle()
@@ -104,7 +100,7 @@ class book
 
 class bookshelf
 {
-  #shelf;
+  #shelf = [];
 
   constructor(shelf)
   {
@@ -113,15 +109,25 @@ class bookshelf
 
   removeBook(book)
   {
-    let index = this.#shelf.IndexOf(book);
-    delete this.#shelf[index];
-    return "The book has been removed.";
+    const isSame = (element) => element === book; //function that goes through each element to check if equal
+    //let index = this.#shelf.IndexOf(book); //only for strings!!
+    let index = this.#shelf.findIndex(isSame);
+    if(index != -1)
+    {
+      this.#shelf.splice(index, 1);
+      console.log("The book has been removed.");
+    }
+    else
+    {
+      console.log("book not found!");
+    }
+    
   }
 
   addBook(book)
   {
     this.#shelf.push(book);
-    return "The book has been added!";
+    console.log("The book has been added!");
   }
 
   returnShelf()
@@ -130,4 +136,24 @@ class bookshelf
   }
 }
 
+let myStats = new bookInfo(100, 2);
+let book1 = new book("Three Blind Mice", "Jane Doe", 23, false, 0);
+let book2 = new book("White Hot Kisses", "John Doe", 300, true, 4.7);
+let book3 = new book("These Violent Delights", "Jane Doe", 500, true, 4);
+let book4 = new book("Discovery of Witches", "Jane Doe", 550, true, 4.7);
+let book5 = new book("City of Fire and Ash", "John Doe", 210, true, 3.5);
+let book6 = new book("Last Argument of Kings", "John Doe", 680, false, 0);
 
+let smallShelf = [book1, book3, book6];
+
+let myBookshelf = new bookshelf([book1, book2, book3, book4, book5, book6]);
+let mySmallBookshelf = new bookshelf(smallShelf);
+
+myBookshelf.removeBook(book3);
+let book7 = new book("Seven Dead Queens", "Jane Doe", 370, false, 0);
+mySmallBookshelf.addBook(book7);
+console.log(myBookshelf.returnShelf());
+console.log(mySmallBookshelf.returnShelf());
+myBookshelf.removeBook(book7); //will return "book has not been found"
+
+console.log(myStats.canIReadToday(book5));
