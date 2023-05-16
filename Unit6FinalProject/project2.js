@@ -3,10 +3,11 @@ class bookInfo
   #pagesPerHour;
   #amtReadPerDay;
 
-  constructor(pagesPerHour, amtReadPerDay)
+  constructor()
   {
-    this.#pagesPerHour = pagesPerHour;
-    this.#amtReadPerDay = amtReadPerDay;
+    
+    this.#pagesPerHour = prompt("How many pages can you read every hour (avg)?");
+    this.#amtReadPerDay = prompt("How many hours a day can you deticate to reading (avg)?");
   }
 
   returnSpeed()
@@ -55,6 +56,7 @@ class book
     this.#rating = rating;
   }
 
+  
   returnTitle()
   {
     return this.#title;
@@ -101,11 +103,11 @@ class book
 
 class bookshelf
 {
-  #shelf = [];
+  #shelf;
 
-  constructor(shelf)
+  constructor()
   {
-    this.#shelf = shelf;
+    this.#shelf = [];
   }
 
   removeBook(book)
@@ -137,67 +139,20 @@ class bookshelf
   }
 }
 
-// let myStats = new bookInfo(100, 2);
-// let book1 = new book("Three Blind Mice", "Jane Doe", 23, false, 0);
-// let book2 = new book("White Hot Kisses", "John Doe", 300, true, 4.7);
-// let book3 = new book("These Violent Delights", "Jane Doe", 500, true, 4);
-// let book4 = new book("Discovery of Witches", "Jane Doe", 550, true, 4.7);
-// let book5 = new book("City of Fire and Ash", "John Doe", 210, true, 3.5);
-// let book6 = new book("Last Argument of Kings", "John Doe", 680, false, 0);
-
-// let smallShelf = [book1, book3, book6];
-
-// let myBookshelf = new bookshelf([book1, book2, book3, book4, book5, book6]);
-// let mySmallBookshelf = new bookshelf(smallShelf);
-
-// myBookshelf.removeBook(book3);
-// let book7 = new book("Seven Dead Queens", "Jane Doe", 370, false, 0);
-// mySmallBookshelf.addBook(book7);
-// console.log(myBookshelf.returnShelf());
-// console.log(mySmallBookshelf.returnShelf());
-// myBookshelf.removeBook(book7); //will return "book has not been found"
-
-// console.log(myStats.canIReadToday(book5));
 
 function main()
 {
       console.log("Welcome to your book log! You'll start by adding your reading stats, then you'll setting up your bookshelf.");
-     alert("ready to countinue?");
-      readingStats();
      
-}
+      let myStats = new bookInfo();
+      let myBookShelf = new bookshelf();
 
-function readingStats()
-  {
-   
-    // let pagesPerHour;
-    //let hoursPerDay;
-    console.log("Here you'll input some reading information about you.")
-    pagesPerHour = prompt("How many pages can you read per hour (avg)?");
-  
-    console.log(pagesPerHour);
-    console.log("Added!");
-      
-    hoursPerDay = prompt("How many hours a day can/do you deticate to reading (avg)?");
-
-    console.log(hoursPerDay);
-    console.log("Your stats have been added!");
-    let currentStats = new bookInfo(pagesPerHour, hoursPerDay);
-    creatingBookshelf(currentStats);
-  }
-
-
-  function creatingBookshelf(currentStats)
-  {
-    console.log("Now we'll create your bookshelf.")
-
-   amtOfBooks = prompt("First enter the amount of books you'll be adding to your shelf.");
-
-    let myBooks = [];
-
-    for(let i = 0; i < parseInt(amtOfBooks); i++)
+     let amt = prompt("How many books do you want to add?");
+     let allBooks = [];
+    for(let i = 0; i < parseInt(amt); i++)
     {
       let title, author, rating, pages, readYet;
+
       console.log("For book " + (i+1) + ": ");
 
       title = prompt("Title: ");
@@ -215,82 +170,89 @@ function readingStats()
       rating = prompt("Rating: ");
       console.log(rating);
 
-      myBooks[i] = new book(title, author, pages, readYet, rating);
+      allBooks[i] = new book(title, author, pages, readYet, rating);
+      myBookShelf.addBook(allBooks[i]);
     }
-    let allMyBooks = new bookshelf(myBooks);
-    console.log(allmyBooks.returnShelf());
-    console.log("Now you can review your information!");
-    alert("Ready?");
-    options(myBooks, allMyBooks, currentStats);
-  }
+    console.log(myBookShelf.returnShelf());
+    console.log("Now that everything has been entered, you can view/change your data.");
+    let running = true;
 
-  function options(myBooks, allMyBooks, currentStats)
-  {
-    console.log(myBooks);
-    running = true;
     while(running)
     {
-      let choice = prompt("see if I can read a book today(1), change bookshelf(2), or exit(3)");
-      if(choice == 1)
+      let choice = prompt("Would you like to see if you can read a book(1), add/remove a book(2), exit(3)?");
+      if(choice==1)
       {
-        title = prompt("What's the title of the book you want to see if you can read today?");
-        let blah = false;
-        for(let i = 0; i < myBooks.length; i++)
+        let titleToFind = prompt("Enter the title of the book you'd like to see if you can read in an avg day: ");
+        let found = false;
+        for(let j = 0; j < myBookShelf.returnShelf().length; j++)
         {
-          bookT = myBooks[i].returnTitle();
-          if(bookT === title)
+          let specificBook = myBookShelf.returnShelf();
+          if(specificBook[j].returnTitle() == titleToFind)
           {
-            console.log(currentStats.canIReadToday(books[i]));
-            blah = true;
-          } 
+            myStats.canIReadToday(titleToFind);
+            found = true;
+          }
+        
         }
-        if(blah == false)
+        if(found == false)
         {
-          console.log("no book was found with that title.");
+          console.log("The book title wasn't found..");
         }
-        options();
-      }
-      else if(choice == 2)
+      } else if(choice == 2)
       {
-        choice2 = prompt("Would you like to add(1) or delete a book(2)?")
-        if(choice2 == 1)
+        let bookManip = prompt("Do you want to add(1) or remove(2) a book?");
+        if(bookManip == 1)
         {
-          t = prompt("Title: ");
-          a = prompt("author: ");
-          r = prompt("Rating: ");
-          rY = prompt("Read yet?: ");
-          p = prompt("Pages: ");
+        let title1 = prompt("Title: ");
+        console.log(title1);
+    
+        let author1 = prompt("Author: ");
+        console.log(author1);
 
-          allMyBooks.addBook(new book(t, a, p, rY, r));
-          console.log("Book has been added!");
+        let pages1 = prompt("Pages: ");
+        console.log(pages1);
 
-        } else if (choice2 == 2)
+        let readYet1 = prompt("Have you read it yet (true/false): ");
+        console.log(readYet1);
+
+        let rating1 = prompt("Rating: ");
+        console.log(rating1);
+        myBookShelf.addBook(new book(title1, author1, pages1, readYet1, rating1));
+        console.log(myBookShelf.returnShelf());
+
+        } else if (bookManip == 2)
         {
-          title1 = prompt("What's the title of the book you want to delete?");
-          for(let i = 0; i < allMyBooks.length; i++)
+          let titleToDelete = prompt("Enter the title of the book you want to remove: ");
+          let found1 = false;
+          console.log(myBookShelf.returnShelf());
+
+        for(let k = 0; k < myBookShelf.returnShelf().length; k++)
         {
-          book = allMyBooks[i].returnTitle();
-          if(book === title1)
+          let booksInQuestion = myBookShelf.returnShelf();
+          console.log(booksInQuestion[k]);
+          let bookInQuestion = booksInQuestion[k];
+          if(bookInQuestion.returnTitle() = titleToDelete)
           {
-            allMyBooks.removeBook(allMyBooks[i]);
-            console.log("Book has been removed");
-          } 
+            myBookShelf.removeBook(myBookShelf[k]);
+            found1 = true;
+            console.log(myBookShelf.returnShelf());
+          }
         }
+        if(found1 == false)
+        {
+          console.log("The book title wasn't found..");
         }
-        options();
-      }
-      else if(choice == 3)
+
+        } else {
+          console.log("You need to enter a 1 or 2");
+        }
+      } else if (choice == 3)
       {
         running = false;
-      }
-      else 
-      {
-        console.log("Please make sure to type 1, 2, 3, or 4!");
-        options();
+      } else {
+        console.log("Please enter a 1, 2, or 3");
       }
     }
-  }
+}
 
-console.log("blah");
-alert("Please use key binds to navigate to the console.");
 main();
